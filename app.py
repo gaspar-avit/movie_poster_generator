@@ -41,6 +41,10 @@ def load_dataset():
 
     return data
 
+@st.cache
+def load_model():
+    return DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
+
 def query_summarization(text):
     """
     Get summarization from HuggingFace Inference API
@@ -69,8 +73,8 @@ def generate_poster(movie_data):
     st.text(synopsis_sum['summary_text'])
 
     # Get image based on synopsis
-    #pipeline = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
-    pipeline = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-2")
+    pipeline = load_model()
+    #pipeline = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-2")
 
     #image = pipe(prompt).images[0]
     #st.image(image, caption=movie_data.title)
