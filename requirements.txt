@@ -1,0 +1,4 @@
+
+kaggle
+zipfile39
+sentence-transformers
