@@ -47,7 +47,7 @@ def query_summarization(text):
     -param text: text to be summarized
     -return: summarized text
     """
-	API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
+    API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
     headers = {"Authorization": f"Bearer {st.secrets['hf_token']}"}
     payload = {"inputs": f"text",}
     
@@ -68,9 +68,9 @@ def generate_poster(movie_data):
     st.text(synopsis_sum)
 
     # Get image based on synopsis
-	pipeline = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
-	image = pipe(prompt).images[0]
-	st.image(image, caption=movie_data.title)
+    pipeline = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
+    image = pipe(prompt).images[0]
+    st.image(image, caption=movie_data.title)
 
     return None #poster_image
 
