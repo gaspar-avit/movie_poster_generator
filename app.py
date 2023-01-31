@@ -69,8 +69,8 @@ def generate_poster(movie_data):
 
     # Get image based on synopsis
     pipeline = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
-    image = pipe(prompt).images[0]
-    st.image(image, caption=movie_data.title)
+    #image = pipe(prompt).images[0]
+    #st.image(image, caption=movie_data.title)
 
     return None #poster_image
 
