@@ -65,10 +65,12 @@ def generate_poster(movie_data):
 
     # Get summarization of movie synopsis
     synopsis_sum =  query_summarization(movie_data.overview.values[0])
-    st.text(synopsis_sum)
+    st.text(synopsis_sum['summary_text'])
 
     # Get image based on synopsis
-    pipeline = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
+    #pipeline = DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
+    pipeline = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-2")
+
     #image = pipe(prompt).images[0]
     #st.image(image, caption=movie_data.title)
 
@@ -90,13 +92,14 @@ with open('/home/appuser/.kaggle/kaggle.json', 'w') as file:
 
 
 # Activate Kaggle API
-api = KaggleApi()
 
 try:
+    api = KaggleApi()
     api.authenticate()
 except:
     with open('/home/appuser/.kaggle/kaggle.json', 'w') as file:
         json.dump(api_token, file)
+    api = KaggleApi()
     api.authenticate() 
 
 
