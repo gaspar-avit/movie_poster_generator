@@ -61,10 +61,10 @@ def generate_poster(movie_data):
     -return: image of generated alternative poster
     """
 
-    st.write(movie_data.overview)
+    st.write(movie_data.overview.values[0])
 
     # Get summarization of movie synopsis
-    synopsis_sum =  query_summarization(movie_data.overview)
+    synopsis_sum =  query_summarization(movie_data.overview.values[0])
     st.text(synopsis_sum)
 
     # Get image based on synopsis
