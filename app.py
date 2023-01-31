@@ -91,7 +91,13 @@ with open('/home/appuser/.kaggle/kaggle.json', 'w') as file:
 
 # Activate Kaggle API
 api = KaggleApi()
-api.authenticate()
+
+try:
+    api.authenticate()
+except:
+    with open('/home/appuser/.kaggle/kaggle.json', 'w') as file:
+        json.dump(api_token, file)
+    api.authenticate() 
 
 
 
