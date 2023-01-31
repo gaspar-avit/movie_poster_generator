@@ -64,7 +64,8 @@ def generate_poster(movie_data):
     st.write(movie_data.overview.values[0])
 
     # Get summarization of movie synopsis
-    synopsis_sum =  query_summarization(movie_data.overview.values[0])
+    with st.spinner("Please wait while the synopsis is being summarized..."):
+        synopsis_sum =  query_summarization(movie_data.overview.values[0])
     st.text(synopsis_sum['summary_text'])
 
     # Get image based on synopsis
