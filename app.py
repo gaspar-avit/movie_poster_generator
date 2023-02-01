@@ -53,10 +53,10 @@ def query_summarization(text):
     """
     API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
     headers = {"Authorization": f"Bearer {st.secrets['hf_token']}"}
-    payload = {"inputs": f"text",}
+    payload = {"inputs": f"{text}",}
     
-    response = requests.request("POST", API_URL, headers=headers, json=payload)
-    return response.json()
+    response = requests.request("POST", API_URL, headers=headers, json=payload).json()
+    return response[0].get('summary_text')
 
 def generate_poster(movie_data):
     """
@@ -69,7 +69,7 @@ def generate_poster(movie_data):
 
     # Get summarization of movie synopsis
     with st.spinner("Please wait while the synopsis is being summarized..."):
-        synopsis_sum =  query_summarization(movie_data.overview.values[0])
+        synopsis_sum = query_summarization(movie_data.overview.values[0])
     st.text(synopsis_sum)
 
     # Get image based on synopsis
