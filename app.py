@@ -43,7 +43,9 @@ def load_dataset():
 
 @st.cache
 def load_model():
-    return DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
+    #return DiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
+    return DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4")
+
 
 def query_summarization(text):
     """
@@ -64,8 +66,6 @@ def generate_poster(movie_data):
     -param movie_data: metadata of movie selected by user
     -return: image of generated alternative poster
     """
-
-    st.write(movie_data.overview.values[0])
 
     # Get summarization of movie synopsis
     with st.spinner("Please wait while the synopsis is being summarized..."):
