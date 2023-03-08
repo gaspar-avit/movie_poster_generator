@@ -4,3 +4,4 @@ zipfile39
 sentence-transformers
 diffusers
 accelerate
+htbuilder
