@@ -1,4 +1,5 @@
 ## Alternative movie poster generator
+## @author: Gaspar Avit Ferrero
 
 
 import streamlit as st
@@ -45,8 +46,6 @@ from kaggle.api.kaggle_api_extended import KaggleApi
 def link(link, text, **style):
     return a(_href=link, _target="_blank", style=styles(**style))(text)
 
-def image(src_as_string, **style):
-    return img(src=src_as_string, style=styles(**style))
 
 def layout(*args):
 
@@ -98,17 +97,15 @@ def layout(*args):
 
     st.markdown(str(foot), unsafe_allow_html=True)
 
+    
 def footer():
     myargs = [
-        #"Made in ",
-        #image('https://avatars3.githubusercontent.com/u/45109972?s=400&v=4',
-        #      width=px(25), height=px(25)),
-        #" with ❤️ by ",
         "Made with ❤️ by ",
         link("https://www.linkedin.com/in/gaspar-avit/", "Gaspar Avit"),
     ]
     layout(*myargs)
 
+    
 def authenticate_kaggle():
     # Connect to kaggle API
 
